@@ -306,18 +306,20 @@ section h2 {
     position: relative;
     border-radius: var(--radius);
     overflow: hidden;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     cursor: pointer;
-    background: white;
+    background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
     width: 320px;
     height: 250px;
     flex-shrink: 0;
+    border: 1px solid rgba(0,0,0,0.05);
 }
 
 .service-card:hover, .product-card:hover {
-    transform: scale(1.02);
-    box-shadow: var(--shadow-hover);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    border: 1px solid rgba(73, 80, 87, 0.1);
 }
 
 .card-image {
@@ -342,10 +344,12 @@ section h2 {
     left: 0;
     right: 0;
     padding: 20px;
-    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.3), transparent);
     color: white;
     font-size: 1.2rem;
     font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    backdrop-filter: blur(2px);
 }
 
 .card-overlay {
@@ -371,18 +375,23 @@ section h2 {
 
 .detail-btn {
     padding: 12px 30px;
-    background: white;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
     color: var(--text-primary);
-    border: none;
+    border: 2px solid rgba(255,255,255,0.8);
     border-radius: 25px;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: var(--transition);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    backdrop-filter: blur(10px);
 }
 
 .detail-btn:hover {
-    transform: scale(1.05);
+    transform: scale(1.05) translateY(-2px);
+    background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    border: 2px solid rgba(255,255,255,1);
 }
 
 .packages-grid {
@@ -396,33 +405,70 @@ section h2 {
 }
 
 .package-card {
-    background: white;
+    background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
     border-radius: var(--radius);
     padding: 30px;
-    box-shadow: var(--shadow);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     text-align: center;
-    transition: var(--transition);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     width: 320px;
     height: 250px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     flex-shrink: 0;
+    border: 1px solid rgba(0,0,0,0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.package-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent) 0%, #6c757d 100%);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.package-card:hover::before {
+    transform: scaleX(1);
 }
 
 .package-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-hover);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    border: 1px solid rgba(73, 80, 87, 0.1);
 }
 
 .package-card h3 {
     color: var(--accent);
     margin-bottom: 1rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    position: relative;
+}
+
+.package-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent) 0%, #6c757d 100%);
+    border-radius: 1px;
 }
 
 .package-card p {
     color: var(--text-secondary);
     margin-bottom: 1.5rem;
+    line-height: 1.6;
+    font-size: 0.95rem;
 }
 
 .package-phone {
